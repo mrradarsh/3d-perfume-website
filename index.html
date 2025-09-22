@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Essence - Luxury Natural Perfumes</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --sage: #a8c09a;
+            --emerald: #10b981;
+            --mint: #d1fae5;
+            --forest: #065f46;
+            --gold: #d4af37;
+            --marble: #f8f6f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--mint) 0%, #ffffff 100%);
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .green-glow {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        .gold-accent {
+            background: linear-gradient(135deg, var(--gold), #f4e158);
+        }
+        
+        .vanta-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .perfume-bottle {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .perfume-bottle:hover {
+            transform: rotateY(15deg) translateZ(20px);
+            filter: drop-shadow(0 10px 20px rgba(16, 185, 129, 0.4));
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .mist {
+            background: radial-gradient(circle at center, rgba(168, 192, 154, 0.3) 0%, transparent 70%);
+            animation: mist 4s ease-in-out infinite;
+        }
+        
+        @keyframes mist {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-luxury {
+            background: linear-gradient(135deg, var(--emerald), var(--forest));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-luxury:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        }
+        
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-luxury:hover::before {
+            left: 100%;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(168, 192, 154, 0.2);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .scent-note {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--mint);
+            color: var(--forest);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 3px;
+            font-weight: 500;
+        }
+        
+        .eco-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 15px;
+            background: linear-gradient(135deg, #86efac, #22c55e);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .hero-title {
+            background: linear-gradient(135deg, var(--forest), var(--emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--sage), transparent);
+            margin: 60px 0;
+        }
+        
+        .leaf-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a8c09a' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm-20-15c8.284 0 15 6.716 15 15s-6.716 15-15 15-15-6.716-15-15 6.716-15 15-15z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        
+        .cart-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(168, 192, 154, 0.3);
+        }
+        
+        .wishlist-heart {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .wishlist-heart:hover {
+            transform: scale(1.2);
+            fill: #ef4444;
+        }
+        
+        .wishlist-heart.active {
+            fill: #ef4444;
+            animation: heartBeat 0.5s ease;
+        }
+        
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .loading-spinner {
+            border: 3px solid rgba(168, 192, 154, 0.3);
+            border-top: 3px solid var(--emerald);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--emerald);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .perfume-showcase {
+            perspective: 1000px;
+        }
+        
+        .bottle-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+        
+        .bottle-3d:hover {
+            transform: rotateY(180deg);
+        }
+
+        /* 3D Immersive Enhancements */
+        .immersive-3d {
+            transform-style: preserve-3d;
+            animation: float3d 6s ease-in-out infinite;
+        }
+        
+        @keyframes float3d {
+            0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+            25% { transform: translateY(-15px) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(-25px) rotateX(0deg) rotateY(10deg); }
+            75% { transform: translateY(-15px) rotateX(-5deg) rotateY(5deg); }
+        }
+        
+        .parallax-element {
+            transform: translateZ(0);
+            transition: transform 0.1s ease-out;
+        }
+        
+        .glass-morphism-3d {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateZ(50px);
+            box-shadow: 
+                0 8px 32px rgba(16, 185, 129, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .particle-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(168, 192, 154, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .depth-layer-1 { transform: translateZ(20px); }
+        .depth-layer-2 { transform: translateZ(40px); }
+        .depth-layer-3 { transform: translateZ(60px); }
+        
+        .rotate-on-hover {
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .rotate-on-hover:hover {
+            transform: rotateY(25deg) rotateX(10deg) translateZ(30px);
+        }
+        
+        .shimmer-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shimmer-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .mist-3d {
+            background: radial-gradient(
+                ellipse at center,
+                rgba(168, 192, 154, 0.4) 0%,
+                rgba(168, 192, 154, 0.1) 50%,
+                transparent 70%
+            );
+            animation: mistFloat 8s ease-in-out infinite;
+            filter: blur(2px);
+        }
+        
+        @keyframes mistFloat {
+            0%, 100% { 
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translateY(-30px) scale(1.2) rotate(5deg);
+                opacity: 0.6;
+            }
+        }
+        
+        .holographic {
+            background: linear-gradient(
+                135deg,
+                rgba(16, 185, 129, 0.8) 0%,
+                rgba(212, 175, 55, 0.6) 25%,
+                rgba(168, 192, 154, 0.8) 50%,
+                rgba(16, 185, 129, 0.8) 75%,
+                rgba(168, 192, 154, 0.8) 100%
+            );
+            background-size: 400% 400%;
+            animation: holographicShift 4s ease infinite;
+        }
+        
+        @keyframes holographicShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .tilt-container {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+        }
+        
+        .tilt-element {
+            transition: transform 0.1s ease-out;
+        }
+        
+        .immersive-section {
+            perspective: 1500px;
+            overflow: hidden;
+        }
+        
+        .floating-bottle {
+            animation: bottleFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 20px 40px rgba(16, 185, 129, 0.3));
+        }
+        
+        @keyframes bottleFloat {
+            0%, 100% { 
+                transform: translateY(0) rotateZ(0deg) scale(1);
+            }
+            25% { 
+                transform: translateY(-15px) rotateZ(2deg) scale(1.02);
+            }
+            50% { 
+                transform: translateY(-25px) rotateZ(-2deg) scale(1.05);
+            }
+            75% { 
+                transform: translateY(-15px) rotateZ(1deg) scale(1.02);
+            }
+        }
+        
+        .depth-shadow {
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                0 20px 60px rgba(16, 185, 129, 0.1),
+                inset 0 -5px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .rotate-glow {
+            animation: rotateGlow 6s linear infinite;
+        }
+        
+        @keyframes rotateGlow {
+            0% { 
+                box-shadow: 
+                    0 0 20px rgba(16, 185, 129, 0.4),
+                    inset 0 0 20px rgba(16, 185, 129, 0.1);
+            }
+            25% { 
+                box-shadow: 
+                    0 0 30px rgba(212, 175, 55, 0.4),
+                    inset 0 0 30px rgba(212, 175, 55, 0.1);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 40px rgba(168, 192, 154, 0.5),
+                    inset 0 0 40px rgba(168, 192, 154, 0.2);
+            }
+            75% { 
+                box-shadow: 
+                    0 0 30px rgba(212, 175, 55, 0.4),
+                    inset 0 0 30px rgba(212, 175, 55, 0.1);
+            }
+            100% { 
+                box-shadow: 
+                    0 0 20px rgba(16, 185, 129, 0.4),
+                    inset 0 0 20px rgba(16, 185, 129, 0.1);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i data-feather="leaf" class="text-emerald-600 w-8 h-8"></i>
+                <span class="font-serif text-2xl font-bold text-emerald-800">Green Essence</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-emerald-700 hover:text-emerald-500 transition-colors">Home</a>
+                <a href="#collections" class="text-emerald-700 hover:text-emerald-500 transition-colors">Collections</a>
+                <a href="#about" class="text-emerald-700 hover:text-emerald-500 transition-colors">About</a>
+                <a href="#contact" class="text-emerald-700 hover:text-emerald-500 transition-colors">Contact</a>
+                <button id="cartBtn" class="relative p-2 text-emerald-700 hover:text-emerald-500 transition-colors">
+                    <i data-feather="shopping-bag" class="w-6 h-6"></i>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                </button>
+                <button id="wishlistBtn" class="p-2 text-emerald-700 hover:text-emerald-500 transition-colors">
+                    <i data-feather="heart" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <button id="mobileMenuBtn" class="md:hidden p-2 text-emerald-700">
+                <i data-feather="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-serif text-2xl font-bold text-emerald-800">Green Essence</span>
+                <button id="closeMobileMenu" class="p-2 text-emerald-700">
+                    <i data-feather="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="flex flex-col gap-6">
+                <a href="#home" class="text-emerald-700 text-lg py-2">Home</a>
+                <a href="#collections" class="text-emerald-700 text-lg py-2">Collections</a>
+                <a href="#about" class="text-emerald-700 text-lg py-2">About</a>
+                <a href="#contact" class="text-emerald-700 text-lg py-2">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden immersive-section">
+        <div id="vanta-bg" class="vanta-bg"></div>
+        <div class="particle-container" id="particleContainer"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto parallax-element">
+            <div class="depth-layer-3">
+                <h1 class="font-serif text-6xl md:text-8xl font-bold hero-title mb-8 immersive-3d" data-aos="fade-up">
+                    Nature's Essence
+                </h1>
+            </div>
+            <div class="depth-layer-2">
+                <p class="text-2xl md:text-3xl text-emerald-700 mb-12 floating" data-aos="fade-up" data-aos-delay="200">
+                    Discover luxury perfumes crafted from the finest natural ingredients
+                </p>
+            </div>
+            <div class="depth-layer-1">
+                <button id="enterStoreBtn" class="btn-luxury text-lg holographic rotate-glow floating" data-aos="fade-up" data-aos-delay="400">
+                    Enter Store
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce mist-3d">
+            <i data-feather="chevron-down" class="w-10 h-10 text-emerald-600"></i>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section id="collections" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-center text-emerald-800 mb-4" data-aos="fade-up">
+                Our Collections
+            </h2>
+            <p class="text-center text-emerald-600 mb-12" data-aos="fade-up" data-aos-delay="200">
+                Immerse yourself in our curated selection of natural fragrances
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 tilt-container">
+                <!-- Product 1 -->
+                <div class="product-card rotate-on-hover tilt-element depth-layer-1" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative mb-6 perfume-showcase">
+                        <div class="bottle-3d floating-bottle">
+                            <img src="http://static.photos/nature/320x240/1" alt="Forest Bloom" class="w-full h-48 object-cover rounded-xl perfume-bottle shimmer-effect">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <span class="eco-badge glass-morphism-3d">
+                                <i data-feather="leaf" class="w-4 h-4"></i>
+                                Eco-Friendly
+                            </span>
+                        </div>
+                        <div class="absolute bottom-2 left-2 mist-3d w-16 h-16 rounded-full"></div>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold text-emerald-800 mb-2 depth-layer-2">Forest Bloom</h3>
+                    <p class="text-emerald-600 text-sm mb-4 depth-layer-1">A harmonious blend of pine, jasmine, and sandalwood</p>
+                    <div class="mb-4 depth-layer-2">
+                        <span class="scent-note holographic">Pine</span>
+                        <span class="scent-note holographic">Jasmine</span>
+                        <span class="scent-note holographic">Sandalwood</span>
+                    </div>
+                    <div class="flex items-center justify-between depth-layer-3">
+                        <span class="text-2xl font-bold text-emerald-800">$89</span>
+                        <div class="flex gap-2">
+                            <button class="wishlist-heart p-2 text-emerald-600 hover:text-red-500 depth-shadow" data-product="forest-bloom">
+                                <i data-feather="heart" class="w-5 h-5"></i>
+                            </button>
+                            <button class="addToCart bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors depth-shadow" data-product="forest-bloom" data-price="89">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card rotate-on-hover tilt-element depth-layer-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative mb-6 perfume-showcase">
+                        <div class="bottle-3d floating-bottle">
+                            <img src="http://static.photos/nature/320x240/2" alt="Garden Essence" class="w-full h-48 object-cover rounded-xl perfume-bottle shimmer-effect">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <span class="eco-badge glass-morphism-3d">
+                                <i data-feather="leaf" class="w-4 h-4"></i>
+                                Organic
+                            </span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 mist-3d w-20 h-20 rounded-full"></div>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold text-emerald-800 mb-2">Garden Essence</h3>
+                    <p class="text-emerald-600 text-sm mb-4">Fresh rose, lavender, and a hint of citrus</p>
+                    <div class="mb-4">
+                        <span class="scent-note holographic">Rose</span>
+                        <span class="scent-note holographic">Lavender</span>
+                        <span class="scent-note holographic">Bergamot</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-emerald-800">$95</span>
+                        <div class="flex gap-2">
+                            <button class="wishlist-heart p-2 text-emerald-600 hover:text-red-500" data-product="garden-essence">
+                                <i data-feather="heart" class="w-5 h-5"></i>
+                            </button>
+                            <button class="addToCart bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors" data-product="garden-essence" data-price="95">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card rotate-on-hover tilt-element depth-layer-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative mb-6 perfume-showcase">
+                        <div class="bottle-3d floating-bottle">
+                            <img src="http://static.photos/nature/320x240/3" alt="Mystic Woods" class="w-full h-48 object-cover rounded-xl perfume-bottle shimmer-effect">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <span class="eco-badge glass-morphism-3d">
+                                <i data-feather="leaf" class="w-4 h-4"></i>
+                                Sustainable
+                            </span>
+                        </div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mist-3d w-32 h-32 rounded-full"></div>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold text-emerald-800 mb-2">Mystic Woods</h3>
+                    <p class="text-emerald-600 text-sm mb-4">Deep cedarwood, vanilla, and amber</p>
+                    <div class="mb-4">
+                        <span class="scent-note holographic">Cedarwood</span>
+                        <span class="scent-note holographic">Vanilla</span>
+                        <span class="scent-note holographic">Amber</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-emerald-800">$120</span>
+                        <div class="flex gap-2">
+                            <button class="wishlist-heart p-2 text-emerald-600 hover:text-red-500" data-product="mystic-woods">
+                                <i data-feather="heart" class="w-5 h-5"></i>
+                            </button>
+                            <button class="addToCart bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors" data-product="mystic-woods" data-price="120">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explore More Button -->
+            <div class="text-center" data-aos="fade-up">
+                <button class="btn-luxury text-lg">
+                    Explore Full Collection
+                    <i data-feather="arrow-right" class="inline ml-2 w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 leaf-pattern">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-emerald-800 mb-6">
+                        Our Story
+                    </h2>
+                    <p class="text-emerald-700 mb-6 leading-relaxed">
+                        Founded on the belief that luxury should harmonize with nature, Green Essence creates perfumes that capture the pure essence of botanical wonders. Our commitment to sustainability goes beyond ingredients – it's woven into every aspect of our craft.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="glass-morphism p-4 rounded-xl">
+                            <div class="text-3xl font-bold text-emerald-600 mb-2">100%</div>
+                            <div class="text-emerald-700 text-sm">Natural Ingredients</div>
+                        </div>
+                        <div class="glass-morphism p-4 rounded-xl">
+                            <div class="text-3xl font-bold text-emerald-600 mb-2">0%</div>
+                            <div class="text-emerald-700 text-sm">Synthetic Chemicals</div>
+                        </div>
+                    </div>
+                    <button class="btn-luxury">
+                        Learn More
+                        <i data-feather="arrow-right" class="inline ml-2 w-4 h-4"></i>
+                    </button>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <img src="http://static.photos/workspace/640x360/4" alt="Our Workshop" class="rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
+                                <i data-feather="award" class="text-emerald-600 w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-emerald-800">Certified Organic</div>
+                                <div class="text-sm text-emerald-600">By Nature & Progres</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-center text-emerald-800 mb-4" data-aos="fade-up">
+                Visit Our Store
+            </h2>
+            <p class="text-center text-emerald-600 mb-12" data-aos="fade-up" data-aos-delay="200">
+                Experience our fragrances in person
+            </p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Map Placeholder -->
+                <div class="relative h-96 rounded-2xl overflow-hidden shadow-2xl" data-aos="fade-right">
+                    <img src="http://static.photos/cityscape/640x360/5" alt="Store Location" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-feather="map-pin" class="w-5 h-5"></i>
+                            <span class="font-semibold">123 Green Street, Eco District</span>
+                        </div>
+                        <button class="bg-white text-emerald-700 px-4 py-2 rounded-lg hover:bg-emerald-50 transition-colors">
+                            Get Directions
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="glass-morphism p-8 rounded-2xl" data-aos="fade-left">
+                    <h3 class="font-serif text-2xl font-semibold text-emerald-800 mb-6">Get in Touch</h3>
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label class="block text-emerald-700 text-sm font-medium mb-2">Name</label>
+                            <input type="text" required class="w-full px-4 py-2 border border-emerald-200 rounded-lg focus:outline-none focus:border-emerald-500 bg-white/50">
+                        </div>
+                        <div>
+                            <label class="block text-emerald-700 text-sm font-medium mb-2">Email</label>
+                            <input type="email" required class="w-full px-4 py-2 border border-emerald-200 rounded-lg focus:outline-none focus:border-emerald-500 bg-white/50">
+                        </div>
+                        <div>
+                            <label class="block text-emerald-700 text-sm font-medium mb-2">Message</label>
+                            <textarea rows="4" required class="w-full px-4 py-2 border border-emerald-200 rounded-lg focus:outline-none focus:border-emerald-500 bg-white/50"></textarea>
+                        </div>
+                        <button type="submit" class="btn-luxury w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-feather="leaf" class="w-8 h-8"></i>
+                        <span class="font-serif text-2xl font-bold">Green Essence</span>
+                    </div>
+                    <p class="text-emerald-200 text-sm">
+                        Luxury perfumes crafted from nature's finest ingredients
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Collections</h4>
+                    <ul class="space-y-2 text-emerald-200 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Forest Bloom</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Garden Essence</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Mystic Woods</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">View All</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">About</h4>
+                    <ul class="space-y-2 text-emerald-200 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Our Story</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Ingredients</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-emerald-200 hover:text-white transition-colors">
+                            <i data-feather="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-emerald-200 hover:text-white transition-colors">
+                            <i data-feather="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-emerald-200 hover:text-white transition-colors">
+                            <i data-feather="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-emerald-800 pt-8 text-center text-emerald-200 text-sm">
+                <p>&copy; 2024 Green Essence. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-overlay absolute inset-0"></div>
+        <div class="relative z-10 flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-serif text-2xl font-semibold text-emerald-800">Your Cart</h3>
+                    <button id="closeCart" class="text-emerald-600 hover:text-emerald-800">
+                        <i data-feather="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div id="cartItems" class="mb-6">
+                    <p class="text-emerald-600 text-center py-8">Your cart is empty</p>
+                </div>
+                <div id="cartTotal" class="hidden border-t border-emerald-200 pt-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="font-semibold text-emerald-800">Total:</span>
+                        <span id="totalAmount" class="text-2xl font-bold text-emerald-800">$0</span>
+                    </div>
+                    <button class="btn-luxury w-full">
+                        Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-overlay absolute inset-0"></div>
+        <div class="relative z-10 flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-serif text-2xl font-semibold text-emerald-800">Your Wishlist</h3>
+                    <button id="closeWishlist" class="text-emerald-600 hover:text-emerald-800">
+                        <i data-feather="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div id="wishlistItems">
+                    <p class="text-emerald-600 text-center py-8">Your wishlist is empty</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize AOS with enhanced settings
+        AOS.init({
+            duration: 1200,
+            once: true,
+            offset: 150,
+            easing: 'ease-out-cubic'
+        });
+
+        // Initialize Feather Icons with custom attributes
+        feather.replace({
+            'stroke-width': 1.5,
+            'width': 24,
+            'height': 24
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particleContainer');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Enhanced Vanta Background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x10b981,
+            backgroundColor: 0xd1fae5,
+            points: 12.00,
+            maxDistance: 30.00,
+            spacing: 20.00
+        });
+
+        // 3D tilt effect
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.tilt-element');
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const cardCenterX = rect.left + rect.width / 2;
+                const cardCenterY = rect.top + rect.height / 2;
+                
+                const rotateX = (mouseY - cardCenterY) / 50;
+                const rotateY = (mouseX - cardCenterX) / 50;
+                
+                card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+        });
+
+        // Parallax scrolling
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-element');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Create particles on load
+        createParticles();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+        });
+
+        // Enhanced Enter Store Button with 3D animation
+        document.getElementById('enterStoreBtn').addEventListener('click', function() {
+            this.style.transform = 'scale(0.95) translateZ(-10px)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1.05) translateZ(20px)';
+                document.getElementById('collections').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 150);
+        });
+
+        // Cart Management
+        let cart = [];
+        let wishlist = [];
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cartCount');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            if (totalItems > 0) {
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Enhanced Add to Cart with 3D animation
+        document.querySelectorAll('.addToCart').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.dataset.product;
+                const price = parseFloat(this.dataset.price);
+                
+                // 3D animation
+                this.style.transform = 'rotateY(180deg) scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = 'rotateY(0deg) scale(1)';
+                }, 300);
+                
+                const existingItem = cart.find(item => item.product === product);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ product, price, quantity: 1 });
+                }
+                
+                updateCartCount();
+                showNotification('Added to cart!', 'success');
+            });
+        });
+
+        // Enhanced Wishlist Hearts with 3D animation
+        document.querySelectorAll('.wishlist-heart').forEach(heart => {
+            heart.addEventListener('click', function() {
+                const product = this.dataset.product;
+                
+                // 3D heart animation
+                this.style.transform = 'scale(1.5) rotateZ(15deg)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1) rotateZ(0deg)';
+                }, 200);
+                
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    wishlist = wishlist.filter(item => item !== product);
+                    showNotification('Removed from wishlist', 'info');
+                } else {
+                    this.classList.add('active');
+                    wishlist.push(product);
+                    showNotification('Added to wishlist!', 'success');
+                }
+            });
+        });
+
+        // Cart Modal
+        const cartBtn = document.getElementById('cartBtn');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+
+        cartBtn.addEventListener('click', () => {
+            renderCart();
+            cartModal.classList.remove('hidden');
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+        });
+
+        // Wishlist Modal
+        const wishlistBtn = document.getElementById('wishlistBtn');
+        const wishlistModal = document.getElementById('wishlistModal');
+        const closeWishlist = document.getElementById('closeWishlist');
+
+        wishlistBtn.addEventListener('click', () => {
+            renderWishlist();
+            wishlistModal.classList.remove('hidden');
+        });
+
+        closeWishlist.addEventListener('click', () => {
+            wishlistModal.classList.add('hidden');
+        });
+
+        function renderCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const totalAmount = document.getElementById('totalAmount');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-emerald-600 text-center py-8">Your cart is empty</p>';
+                cartTotal.classList.add('hidden');
+                return;
+            }
+            
+            let html = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                html += `
+                    <div class="cart-item">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-emerald-800">${item.product.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</h4>
+                                <p class="text-emerald-600 text-sm">$${item.price} x ${item.quantity}</p>
+                            </div>
+                            <button class="removeFromCart text-red-500 hover:text-red-700" data-product="${item.product}">
+                                <i data-feather="trash-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                total += item.price * item.quantity;
+            });
+            
+            cartItems.innerHTML = html;
+            cartTotal.classList.remove('hidden');
+            totalAmount.textContent = `$${total.toFixed(2)}`;
+            
+            // Add remove functionality
+            document.querySelectorAll('.removeFromCart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const product = this.dataset.product;
+                    cart = cart.filter(item => item.product !== product);
+                    renderCart();
+                    updateCartCount();
+                });
+            });
+        }
+
+        function renderWishlist() {
+            const wishlistItems = document.getElementById('wishlistItems');
+            
+            if (wishlist.length === 0) {
+                wishlistItems.innerHTML = '<p class="text-emerald-600 text-center py-8">Your wishlist is empty</p>';
+                return;
+            }
+            
+            let html = '';
+            wishlist.forEach(product => {
+                html += `
+                    <div class="flex justify-between items-center py-3 border-b border-emerald-100">
+                        <span class="text-emerald-800">${product.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
+                        <button class="removeFromWishlist text-red-500 hover:text-red-700" data-product="${product}">
+                            <i data-feather="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                `;
+            });
+            
+            wishlistItems.innerHTML = html;
+            
+            // Add remove functionality
+            document.querySelectorAll('.removeFromWishlist').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const product = this.dataset.product;
+                    wishlist = wishlist.filter(item => item !== product);
+                    
+                    // Update heart icons
+                    document.querySelectorAll(`.wishlist-heart[data-product="${product}"]`).forEach(heart => {
+                        heart.classList.remove('active');
+                    });
+                    
+                    renderWishlist();
+                    showNotification('Removed from wishlist');
+                });
+            });
+        }
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Thank you! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.parentElement.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

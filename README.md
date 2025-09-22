@@ -1,2 +1,12 @@
-# 3d-perfume-website
-I'll create a sophisticated 3D model website for a green perfume store with interactive elements and immersive visuals. Let me design this as a premium e-commerce experience.
+---
+title: 3d-perfume-website
+emoji: 🐳
+colorFrom: gray
+colorTo: pink
+sdk: static
+pinned: false
+tags:
+  - deepsite
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference

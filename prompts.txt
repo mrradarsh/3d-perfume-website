@@ -1,0 +1,77 @@
+3D Website Prompt: Perfume Green Store
+Project Overview:
+Design and develop a modern, immersive 3D website for a luxury perfume store named "Green Essence". The website should reflect a fresh green theme inspired by nature, elegance, and sophistication. The 3D elements should create an engaging user experience that highlights the perfumes and the store’s natural, eco-friendly ethos.
+
+Visual & UX Design
+Color Palette:
+
+Primary: Various shades of green (sage, emerald, mint)
+Secondary: White, soft beige, and gold/brass accents
+Accent: Translucent glass and marble textures with subtle green veins
+Typography:
+
+Elegant serif font for headings (luxury feel)
+Clean sans-serif for body text (readability)
+Use modern, minimalistic font weights and spacing
+Layout:
+
+Fullscreen 3D interactive homepage with a virtual walkthrough of the store
+Smooth scrolling with parallax effects
+Fixed navigation bar with transparent background that becomes solid on scroll
+Responsive design for desktop, tablet, and mobile
+3D Elements & Interactions
+Homepage 3D Scene:
+
+A photorealistic 3D model of the perfume store interior with a green theme
+Large glass storefront with black minimal frames and the store name “Green Essence” illuminated with soft green LED lighting
+Polished marble floor with subtle green veins reflecting soft ambient light
+Floating glass shelves with elegant perfume bottles in green-tinted glass
+Central marble display counters with velvet cushions showcasing premium perfumes
+Potted plants (ferns, palms) and a vertical moss garden wall behind the cashier
+Warm white spotlights and indirect green ambient lighting creating a cozy atmosphere
+Subtle mist or vapor effect near some perfume bottles to suggest fragrance
+Interactive hotspots on perfume bottles that open detailed product views with 3D rotation and scent descriptions
+User Interaction:
+
+Mouse or touch drag to rotate and explore the 3D store environment
+Clickable perfume bottles that zoom in and show product details with smooth animations
+Ambient sound of soft nature sounds (optional toggle)
+Smooth transitions between different store sections (e.g., shelving, counters, seating area)
+Website Sections
+Landing / Storefront View:
+
+3D interactive entrance with store name and tagline
+Call-to-action button: “Enter Store” that transitions into the interior walkthrough
+Perfume Collections:
+
+3D shelves with categorized perfume bottles
+Filter and search functionality
+Hover or tap to highlight bottles and show quick info
+Product Detail Page:
+
+3D model of the perfume bottle with rotation and zoom
+Description of scent notes, ingredients, and eco-friendly packaging
+Add to cart and wishlist buttons with smooth animations
+About Us:
+
+Story of the brand emphasizing natural ingredients and sustainability
+3D animated infographic showing sourcing and production process
+Contact & Store Locator:
+
+Interactive map with store locations
+Contact form with elegant design matching the green theme
+Technical Recommendations
+Use Three.js or Babylon.js for 3D rendering and interaction
+Use React or Vue for UI components and state management
+Optimize 3D assets for web performance (low poly models, compressed textures)
+Implement lazy loading and progressive enhancement for slower connections
+Use GSAP or Framer Motion for smooth animations and transitions
+Ensure accessibility compliance (ARIA labels, keyboard navigation)
+Responsive design with touch-friendly controls for mobile devices
+Additional Details
+Include subtle gold/brass accents on UI elements like buttons and borders to add luxury feel
+Use glassmorphism effects for overlays and modals with blurred backgrounds
+Incorporate a scent diffuser animation or icon that visually emits soft green mist on the homepage
+Add a blog or news section with articles about perfume trends, natural ingredients, and store events
+
+make a proper animation and 3d immersive design
